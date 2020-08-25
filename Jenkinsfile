@@ -3,34 +3,32 @@ pipeline {
     tools {
         maven 'M2_HOME'
     }
-
     stages {
         
-       stage('build') {
+        stage('build') {
             steps {
-                echo 'Hello build'
+                echo 'Hello World'
                 sh 'mvn clean'
-                sh  'mvn install'
+                sh 'mvn install'
                 sh 'mvn package'
             }
         }
-        stage('test') {
+    stage('test') {
             steps {
-                sh 'mvn test'
-                
+                sh 'mvn test'      
             }
         }
-        stage ('build and publish image') {
-      steps {
-        script {
+    stage ('build and publish image') {
+  steps {
+    script {
           checkout scm
           docker.withRegistry('', 'DockerRegistryID') {
           def customImage = docker.build("jump13/hol-pipeline:${env.BUILD_ID}")
           customImage.push()
           }
     }
-        
     }
 }
     }
-}            
+}
+
