@@ -22,13 +22,11 @@ pipeline {
         stage('deploy') {
             steps {
                 echo 'Hello deploy'
-              
             }
         }
         stage('test') {
             steps {
                 echo 'Hello test'
-                
             }
         }
         
