@@ -1,11 +1,6 @@
 pipeline {
     agent any
     triggers {
-        cron('H /1 * * * *')
-    tools {
-        maven 'M2_HOME'
-    }
-    triggers {
   pollSCM '* * * * *'
 }
 
@@ -35,11 +30,17 @@ pipeline {
           def customImage1 = docker.build("jump13/hol-pipeline")
           customImage.push()
           customImage1.push()
-          }
-    }
-    }
+        
 }
     }
 }
+    }
 }
+	stage ( 'deployment trigger'){
+           steps {
+	     build 'hol-CI'
+}
+}
+  }
+}  
 
