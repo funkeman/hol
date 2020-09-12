@@ -13,7 +13,7 @@
   <artifactId>holiday</artifactId>
   <packaging>war</packaging>
   <name>holiday</name>
-  <description>holiday</description>
+  <description>holiday.</description>
 
   <build>
     <finalName>${project.artifactId}</finalName>
